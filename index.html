@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontes de Altura | Turismo y experiencias 4x4 en Catamarca</title>
+    <meta name="description" content="Descubrí Catamarca con Horizontes de Altura: traslados privados, recorridos personalizados y experiencias 4x4. El camino es parte del destino.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracota: '#4A2818',
+                        'terracota-dark': '#2F1A11',
+                        arena: '#F3EEE7',
+                        'arena-dark': '#D9C7AE',
+                        cielo: '#B76518',
+                        puna: '#795338',
+                        cordillera: '#24170F'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background:
+                radial-gradient(circle at top, rgba(166, 99, 38, 0.08), transparent 25%),
+                linear-gradient(180deg, #f7f3ee 0%, #f4efe8 100%);
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.7), transparent 25%);
+            z-index: 0;
+        }
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(32, 22, 15, 0.74) 0%, rgba(32, 22, 15, 0.42) 45%, rgba(32, 22, 15, 0.88) 100%);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .fleet-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(15, 23, 42, 0.72);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .fleet-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+        .fleet-card img {
+            display: block;
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .fleet-card:hover img {
+            transform: scale(1.04);
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: #fff;
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+        .badge-soft {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(166, 99, 38, 0.08);
+            color: #8B4B1F;
+            border: 1px solid rgba(166, 99, 38, 0.2);
+        }
+        .hero-panel {
+            position: relative;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+            backdrop-filter: blur(18px);
+        }
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(184, 93, 67, 0.04), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
+        .premium-btn-primary,
+        .premium-btn-success {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        }
+        .premium-btn-primary::before,
+        .premium-btn-success::before {
+            content: "";
+            position: absolute;
+            inset: -20% -30%;
+            background: linear-gradient(110deg, transparent 10%, rgba(255,255,255,0.32) 50%, transparent 90%);
+            transform: translateX(-120%) rotate(12deg);
+            transition: transform 0.7s ease;
+        }
+        .premium-btn-primary:hover,
+        .premium-btn-success:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.04);
+        }
+        .premium-btn-primary:hover::before,
+        .premium-btn-success:hover::before {
+            transform: translateX(120%) rotate(12deg);
+        }
+        .premium-btn-primary {
+            background: linear-gradient(135deg, #b76518 0%, #87410f 100%);
+            box-shadow: 0 16px 32px rgba(145, 75, 20, 0.28);
+        }
+        .premium-btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 16px 32px rgba(16, 185, 129, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-arena text-gray-800 font-sans antialiased selection:bg-terracota selection:text-white">
+
+    <!-- Navbar Principal -->
+    <header class="sticky top-0 z-50 bg-[#F7F4EE]/95 backdrop-blur-md border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          
+                    <a href="#" class="flex items-center gap-2">
+                        <img src="img/logo/horizontes/horizonteslogo-transparente.png" alt="Logo de Horizontes de Altura" class="h-14 w-14 object-contain">
+                        <span class="flex flex-col leading-none text-[#3D2113]">
+                            <span class="font-serif text-xl font-bold">Horizontes</span>
+                            <span class="font-serif text-xl font-bold">de Altura</span>
+                            <span class="mt-1 text-[0.55rem] font-bold uppercase tracking-[0.2em]">Catamarca</span>
+                        </span>
+          </a>
+
+          <nav class="hidden lg:flex items-center gap-8 font-medium text-xs uppercase tracking-wider text-stone-800">
+            <a href="#experiencia" class="hover:text-[#8B4B1F] transition-colors">Experiencia</a>
+            <a href="#puntos-turisticos" class="hover:text-[#8B4B1F] transition-colors">Destinos</a>
+            <a href="#door-to-door" class="text-[#8B4B1F] font-bold hover:text-stone-900 transition-colors flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              Cómo organizamos tu recorrido
+            </a>
+            <a href="#flota" class="hover:text-[#8B4B1F] transition-colors">Vehículos</a>
+                        <a href="#videos" class="hover:text-[#8B4B1F] transition-colors">Videos</a>
+                        <a href="#cotizador" class="bg-[#8B4B1F] hover:bg-[#673515] text-white px-5 py-2.5 rounded-xl font-bold shadow-sm transition-all">
+                            Consultar recorrido
+            </a>
+          </nav>
+
+          <div class="lg:hidden">
+            <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" class="p-2 text-stone-800 hover:text-[#8B4B1F] focus:outline-none">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden bg-[#F7F4EE] border-b border-stone-200 px-4 pt-2 pb-6 space-y-3">
+        <a href="#experiencia" class="block py-2 text-xs uppercase font-medium text-stone-800">Experiencia</a>
+        <a href="#puntos-turisticos" class="block py-2 text-xs uppercase font-medium text-stone-800">Destinos</a>
+        <a href="#door-to-door" class="block py-2 text-xs uppercase font-bold text-[#8B4B1F]">Cómo organizamos tu recorrido</a>
+        <a href="#flota" class="block py-2 text-xs uppercase font-medium text-stone-800">Vehículos</a>
+        <a href="#videos" class="block py-2 text-xs uppercase font-medium text-stone-800">Videos</a>
+                <a href="#cotizador" class="block text-center bg-[#8B4B1F] text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider mt-2">
+                    Consultar recorrido
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 z-0 opacity-100 mix-blend-normal">
+            <video class="w-full h-full object-cover object-center" autoplay muted loop playsinline preload="metadata" poster="img/estructura/hero-bg.jpg" aria-hidden="true" style="filter: saturate(1.08) contrast(1.08);">
+                <source src="img/galeria/videos/WhatsApp%20Video%202026-10-12%20at%207.26.23%20PM%20(1).mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="absolute inset-0 gradient-overlay z-0"></div>
+        <div class="absolute inset-0 hero-pattern z-0 opacity-20"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-white text-center lg:text-left">
+                    <div class="flex flex-col items-center text-center space-y-4 lg:items-start lg:text-left">
+                        <div class="rounded-2xl bg-[#F3EEE7] p-2 shadow-xl ring-1 ring-white/30">
+                            <img src="img/logo/horizontes/horizonteslogo-transparente.png" alt="Horizontes de Altura · Catamarca · Argentina" class="w-40 sm:w-48 h-auto object-contain">
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-terracota/30 backdrop-blur-md border border-terracota/40 text-terracota-100 text-xs sm:text-sm font-semibold tracking-wide">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+                        <span>Turismo · Traslados privados · Experiencias 4x4</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-serif leading-tight text-white drop-shadow-sm">
+                        El camino es parte del <span class="text-amber-400">destino</span>
+                    </h1>
+
+                    <p class="text-base sm:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Descubrí Catamarca a tu manera. Coordinamos traslados privados, recorridos personalizados y experiencias 4x4 desde nuestra base en Catamarca.
+                    </p>
+
+                    <!-- Beneficios Rápidos -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 text-left">
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-200">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                            <span>Toyota Hilux y Ford Ranger nuevas</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-200">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                            <span>Recorridos según tus intereses</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-200">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                            <span>Destinos acordados con vos</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#cotizador" class="premium-btn-primary w-full sm:w-auto text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 text-center flex items-center justify-center gap-3 text-base">
+                            <i data-lucide="calculator" class="w-5 h-5"></i>
+                            <span>Consultar mi recorrido</span>
+                        </a>
+                        <a href="https://wa.me/5493834571075" target="_blank" rel="noopener noreferrer" class="premium-btn-success w-full sm:w-auto text-white font-semibold px-6 py-4 rounded-xl border border-emerald-500 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm text-base">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span>Hablar por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card flotante de la propuesta de valor -->
+                <div class="lg:col-span-5">
+                    <div class="hero-panel p-6 sm:p-8 rounded-3xl text-gray-800 space-y-6">
+                        <div class="flex items-center gap-3 pb-4 border-b border-gray-100 relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-terracota/10 text-terracota flex items-center justify-center font-bold shadow-sm">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900">Explorá con atención personal</h3>
+                                <p class="text-xs text-gray-500">Un recorrido conversado desde el comienzo</p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-4 text-sm text-gray-600 relative z-10">
+                            <li class="flex items-start gap-3 rounded-2xl bg-amber-50/70 border border-amber-100 p-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="plane-landing" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span><strong>Traslados privados:</strong> coordiná tu viaje desde un aeropuerto hacia Fiambalá u otro destino acordado.</span>
+                            </li>
+                            <li class="flex items-start gap-3 rounded-2xl bg-sky-50/70 border border-sky-100 p-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span><strong>Recorridos personalizados:</strong> compartinos qué lugares te interesan y conversemos sobre el itinerario.</span>
+                            </li>
+                            <li class="flex items-start gap-3 rounded-2xl bg-emerald-50/70 border border-emerald-100 p-3">
+                                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                                </div>
+                                <span><strong>Vehículos protagonistas:</strong> Toyota Hilux y Ford Ranger nuevas para explorar distintos paisajes de Catamarca.</span>
+                            </li>
+                        </ul>
+
+                        <div class="p-4 rounded-2xl bg-arena border border-arena-dark text-xs text-gray-700 flex items-center gap-3 relative z-10">
+                            <i data-lucide="info" class="w-5 h-5 text-terracota shrink-0"></i>
+                            <span>Contanos tu fecha, destino e intereses. La disponibilidad y las condiciones del recorrido se confirman antes de reservar.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: La experiencia Horizontes de Altura -->
+    <section id="experiencia" class="py-20 bg-stone-100 text-stone-900 border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                    <span class="text-[#8B4B1F] font-bold text-xs uppercase tracking-widest bg-[#B76518]/10 px-3.5 py-1 rounded-full border border-[#B76518]/20">
+                        Aventura con identidad local
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900">
+            Mucho más que llegar: salir a descubrir Catamarca
+          </h2>
+          <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+            Desde los traslados privados hasta las experiencias 4x4, cada recorrido se conversa para que el paisaje también sea parte de tu viaje.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center">
+              <i data-lucide="plane-landing" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-stone-900">Traslados coordinados</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Coordiná un traslado privado desde el aeropuerto hacia Fiambalá u otro destino acordado. Consultanos con anticipación para confirmar disponibilidad y condiciones.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center">
+              <i data-lucide="bed-double" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-stone-900">Vehículos para explorar</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              La Toyota Hilux nueva y la Ford Ranger nueva son protagonistas de una propuesta pensada para recorrer distintos paisajes de Catamarca.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center">
+              <i data-lucide="compass" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif font-bold text-xl text-stone-900">Recorridos a tu manera</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Contanos qué lugares te interesan y conversemos sobre una experiencia privada. El itinerario, el acceso y las condiciones se confirman antes de cada reserva.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 flex flex-col sm:flex-row items-center gap-6 shadow-sm">
+          <img src="img/logo/horizontes/horizonteslogo-transparente.png" alt="Logo de Horizontes de Altura" class="w-20 h-20 shrink-0 object-contain">
+          <div class="space-y-1 text-center sm:text-left">
+            <p class="text-stone-700 font-serif italic text-sm sm:text-base">
+              “El camino es parte del destino”. Explorá Catamarca con un recorrido conversado desde el comienzo.
+            </p>
+            <span class="text-xs font-bold text-[#8B4B1F] block">Horizontes de Altura · Catamarca, Argentina</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección de los 9 Puntos Turísticos Imponentes -->
+    <section id="puntos-turisticos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-terracota font-bold text-xs uppercase tracking-widest bg-terracota/10 px-3 py-1 rounded-full">Catamarca, en el recorrido</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-gray-900">Paisajes que merecen ser parte del viaje</h2>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    De la cordillera a las dunas, cada lugar ofrece otra forma de encontrarse con el paisaje. Consultá qué destinos pueden formar parte de tu recorrido.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/ruta-del-adobe.jpg" alt="Ruta del Adobe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 01</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Ruta del Adobe</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Un recorrido por la arquitectura de adobe y la historia de las localidades del oeste catamarqueño.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/termas-fiambala.jpg" alt="Termas de Fiambalá" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 02</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Termas de Fiambalá</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Aguas termales en un entorno de quebrada. Consultá por acceso y condiciones para la fecha de tu viaje.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/dunas-saujil.jpg" alt="Dunas Mágicas de Saujil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 03</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Dunas Mágicas de Saujil</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Un paisaje de arena que invita a contemplar el desierto catamarqueño y sus formas cambiantes.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/dunas-taton.jpg" alt="Dunas de Tatón" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 04</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Dunas de Tatón</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Extensiones de arena y relieve desértico que muestran otra cara del paisaje de la región.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/canon-del-indio.jpg" alt="Cañón del Indio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 05</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Cañón del Indio</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Formaciones rocosas y tonos rojizos que convierten el paso por el cañón en una experiencia visual.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/las-angosturas.jpg" alt="Camino de Las Angosturas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 06</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Camino de Las Angosturas</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Un camino entre quebradas y variaciones de relieve que invita a mirar el trayecto con atención.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/cortaderas.jpg" alt="Cortaderas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 07</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Cortaderas</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Un paraje de la Puna catamarqueña para descubrir la amplitud y los contrastes de la altura.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/los-seismiles.jpg" alt="Los Seismiles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 08</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Los Seismiles</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Una ruta de alta montaña marcada por volcanes y algunos de los paisajes más imponentes de Catamarca.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-arena rounded-2xl overflow-hidden border border-arena-dark shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/estructura/paso-san-francisco.jpg" alt="Paso de San Francisco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-amber-400 text-xs font-bold px-2.5 py-1 rounded-md">Punto 09</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-lg text-gray-900 font-serif">Paso de San Francisco</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">Un paso cordillerano entre Argentina y Chile. El acceso y las condiciones deben confirmarse para cada fecha.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Protocolo de Bienvenida y Traslado -->
+    <section id="door-to-door" class="py-16 bg-stone-50 border-y border-stone-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <span class="text-terracota font-bold text-xs uppercase tracking-widest bg-terracota/10 px-3 py-1 rounded-full border border-terracota/20">
+                        Traslados privados y recorridos conversados
+          </span>
+          <h2 class="text-3xl font-serif font-bold text-gray-900">
+            Organicemos tu próximo recorrido
+          </h2>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Compartinos origen, destino, fecha e intereses. Horizontes de Altura confirma disponibilidad, itinerario y condiciones antes de que reserves.
+          </p>
+          <div class="flex justify-center">
+            <a href="#cotizador" class="inline-flex items-center gap-2 bg-[#5A3127] hover:bg-[#3D221C] text-white font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition-all shadow-md">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+          
+          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm relative space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-sm font-serif">
+              01
+            </div>
+            <h3 class="font-bold text-base text-gray-900">Contanos tu plan</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Compartí tu aeropuerto o punto de partida, destino, fecha y cantidad de pasajeros para iniciar la consulta.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm relative space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-sm font-serif">
+              02
+            </div>
+            <h3 class="font-bold text-base text-gray-900">Conversemos el itinerario</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Indicá qué paisajes te interesan. Las paradas y el recorrido se acuerdan según la consulta y las condiciones del destino.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm relative space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-sm font-serif">
+              03
+            </div>
+            <h3 class="font-bold text-base text-gray-900">Confirmación clara</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Antes de reservar, confirmamos por WhatsApp la disponibilidad, el destino, el itinerario y las condiciones del servicio.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm relative space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-sm font-serif">
+              04
+            </div>
+            <h3 class="font-bold text-base text-gray-900">El camino también cuenta</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              La Toyota Hilux y la Ford Ranger nuevas representan el espíritu explorador de Horizontes de Altura en recorridos privados y experiencias 4x4.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="mt-10 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
+          <div class="space-y-2 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-2 text-amber-400 font-semibold text-xs uppercase tracking-wider">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              Atención directa de Horizontes de Altura
+            </div>
+            <h4 class="text-lg font-bold">Tu consulta, conversada con claridad</h4>
+            <p class="text-xs text-gray-300 max-w-2xl leading-relaxed">
+              Escribinos para consultar tu traslado o experiencia. Te responderemos con la información disponible y los pasos para confirmar la reserva.
+            </p>
+          </div>
+          <a href="#cotizador" class="shrink-0 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md">
+            Iniciar consulta
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección de Flota Exclusiva -->
+    <section id="flota" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-widest bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">Aventura · Catamarca</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-serif leading-tight">Vehículos para explorar Catamarca</h2>
+                    <p class="text-gray-300 leading-relaxed text-base">
+                        La Toyota Hilux nueva y la Ford Ranger nueva son parte de una propuesta de traslados privados, recorridos personalizados y experiencias 4x4. Cada itinerario se conversa y confirma antes de reservar.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                            <i data-lucide="truck" class="w-6 h-6 text-amber-400"></i>
+                            <h4 class="font-bold text-sm">Toyota Hilux nueva</h4>
+                            <p class="text-xs text-gray-400">Uno de los vehículos protagonistas de Horizontes de Altura para recorrer los paisajes de la región.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                            <i data-lucide="truck" class="w-6 h-6 text-amber-400"></i>
+                            <h4 class="font-bold text-sm">Ford Ranger nueva</h4>
+                            <p class="text-xs text-gray-400">Un vehículo protagonista de la identidad exploradora de Horizontes de Altura.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                            <i data-lucide="map" class="w-6 h-6 text-amber-400"></i>
+                            <h4 class="font-bold text-sm">Recorridos personalizados</h4>
+                            <p class="text-xs text-gray-400">Conversamos tus intereses, el destino y las condiciones antes de confirmar.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                            <i data-lucide="mountain" class="w-6 h-6 text-amber-400"></i>
+                            <h4 class="font-bold text-sm">Experiencias 4x4</h4>
+                            <p class="text-xs text-gray-400">Una manera personal de acercarse a los caminos y paisajes de Catamarca.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-800">
+                            <img src="img/flota/hilux.png" alt="Toyota Hilux nueva" class="w-full h-[22rem] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                                <span class="text-amber-400 font-bold text-xs uppercase">Toyota Hilux</span>
+                                <h3 class="text-lg font-bold text-white">Aventura y experiencias 4x4</h3>
+                            </div>
+                        </div>
+
+                        <div class="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-800">
+                            <img src="img/flota/ranger.jpeg" alt="Ford Ranger nueva" class="w-full h-[22rem] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                                <span class="text-amber-400 font-bold text-xs uppercase">Ford Ranger</span>
+                                <h3 class="text-lg font-bold text-white">Experiencia 4x4 para explorar</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos del recorrido -->
+    <section id="videos" class="py-20 bg-slate-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10 space-y-4">
+                <span class="text-amber-400 font-bold text-xs uppercase tracking-widest">Horizontes de Altura en movimiento</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif">Un vistazo al recorrido</h2>
+                <p class="text-gray-300 text-base sm:text-lg">Mirá los paisajes y caminos de Catamarca en video.</p>
+            </div>
+            <video class="block w-full max-h-[75vh] mx-auto rounded-2xl bg-black object-contain shadow-2xl" controls preload="metadata" playsinline poster="img/estructura/hero-bg.jpg" aria-label="Video del recorrido de Horizontes de Altura por Catamarca">
+                <source src="img/galeria/videos/WhatsApp%20Video%202026-10-12%20at%207.26.23%20PM%20(1).mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <span class="badge-soft">Catamarca</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-gray-900">Paisajes y caminos para descubrir</h2>
+                <p class="text-gray-600 text-base sm:text-lg">Una mirada a los lugares que inspiran los recorridos de Horizontes de Altura.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="gallery-item">
+                    <img src="img/galeria/img 01.jpeg" alt="Fiambalá y recorrido">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 02.jpeg" alt="Paisaje del recorrido">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 03.jpeg" alt="Ruta de montaña en Fiambalá">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 04.jpeg" alt="Vista panorámica del trayecto">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 05.jpeg" alt="Paisaje cordillerano">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 06.jpeg" alt="Recorrido por la ruta">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 07.jpeg" alt="Paisaje de Fiambalá">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 08.jpeg" alt="Camino y formación montañosa">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 09.jpeg" alt="Paisaje de la zona de Fiambalá">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 10.jpeg" alt="Vista de ruta y cordillera">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 11.jpeg" alt="Recorrido en vehículo de la zona">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 12.jpeg" alt="Paisaje de Fiambalá durante el viaje">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 13.jpeg" alt="Nuestro recorrido final en Fiambalá">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 14.jpeg" alt="Ruta entre paisajes áridos y montañas de Catamarca" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 15.jpeg" alt="Letrero de Fiambalá en la plaza" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 16.jpeg" alt="Cielo nublado sobre los cerros de Catamarca" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 17.jpeg" alt="Vegetación y cerros áridos de Catamarca" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 18.jpeg" alt="Camioneta Ford Ranger en un paisaje de altura" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 19.jpeg" alt="Camino de ripio entre montañas" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 20.jpeg" alt="Iglesia de adobe en un paraje catamarqueño" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 22.jpeg" alt="Construcción tradicional de adobe en Fiambalá" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 23.jpeg" alt="Portal de bienvenida a Fiambalá" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/galeria/img 24.jpeg" alt="Esculturas junto al acceso a Fiambalá" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotizador Interactivo e Integración con WhatsApp -->
+    <section id="cotizador" class="py-20 bg-arena">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-arena-dark p-6 sm:p-10 space-y-8">
+                
+                <div class="text-center space-y-2">
+                    <span class="text-terracota font-bold text-xs uppercase tracking-widest">Atención Inmediata</span>
+                    <h2 class="text-3xl font-extrabold font-serif text-gray-900">Contanos qué viaje tenés en mente</h2>
+                    <p class="text-sm text-gray-600">Contanos qué viaje tenés en mente y consultá disponibilidad directamente con Horizontes de Altura por WhatsApp (<strong>+54 9 383 457-1075</strong>).</p>
+                </div>
+
+                <form id="transferForm" onsubmit="sendWhatsApp(event)" class="space-y-6">
+                    
+                    <!-- Aeropuerto de Origen -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">1. Aeropuerto de Salida / Origen</label>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex items-center gap-3 hover:border-terracota transition-all [&:has(:checked)]:border-terracota [&:has(:checked)]:bg-terracota/5">
+                                <input type="radio" name="aeropuerto" value="Aeropuerto de Catamarca (CTC)" checked class="text-terracota focus:ring-terracota">
+                                <div>
+                                    <span class="font-bold block text-sm text-gray-900">Catamarca (CTC)</span>
+                                    <span class="text-xs text-gray-500">San Fernando del Valle</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex items-center gap-3 hover:border-terracota transition-all [&:has(:checked)]:border-terracota [&:has(:checked)]:bg-terracota/5">
+                                <input type="radio" name="aeropuerto" value="Aeropuerto de La Rioja (IRJ)" class="text-terracota focus:ring-terracota">
+                                <div>
+                                    <span class="font-bold block text-sm text-gray-900">La Rioja (IRJ)</span>
+                                    <span class="text-xs text-gray-500">Capitán Vicente Almandos</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex items-center gap-3 hover:border-terracota transition-all [&:has(:checked)]:border-terracota [&:has(:checked)]:bg-terracota/5">
+                                <input type="radio" name="aeropuerto" value="Aeropuerto de Tucumán (TUC)" class="text-terracota focus:ring-terracota">
+                                <div>
+                                    <span class="font-bold block text-sm text-gray-900">Tucumán (TUC)</span>
+                                    <span class="text-xs text-gray-500">Benjamín Matienzo</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="destino" class="block text-xs font-bold text-gray-700 uppercase mb-2">Destino</label>
+                        <input type="text" id="destino" required maxlength="100" placeholder="Fiambalá u otro destino acordado" class="w-full bg-arena border border-arena-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-terracota">
+                    </div>
+
+                    <!-- Puntos Turísticos a Incluir -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Lugares de interés durante el recorrido</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Cañón del Indio" class="rounded text-terracota focus:ring-terracota">
+                                <span>Cañón del Indio</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Camino de Las Angosturas" class="rounded text-terracota focus:ring-terracota">
+                                <span>Camino de Las Angosturas</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Los Seismiles" class="rounded text-terracota focus:ring-terracota">
+                                <span>Los Seismiles</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Cortaderas" class="rounded text-terracota focus:ring-terracota">
+                                <span>Cortaderas</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Paso de San Francisco" class="rounded text-terracota focus:ring-terracota">
+                                <span>Paso San Francisco</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Dunas de Saujil" class="rounded text-terracota focus:ring-terracota">
+                                <span>Dunas Saujil</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Dunas de Tatón" class="rounded text-terracota focus:ring-terracota">
+                                <span>Dunas Tatón</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Termas de Fiambalá" class="rounded text-terracota focus:ring-terracota">
+                                <span>Termas Fiambalá</span>
+                            </label>
+                            <label class="cursor-pointer border border-gray-200 rounded-lg p-3 text-xs font-medium flex items-center gap-2 hover:border-terracota [&:has(:checked)]:bg-terracota/10 [&:has(:checked)]:border-terracota">
+                                <input type="checkbox" name="puntos" value="Ruta del Adobe" class="rounded text-terracota focus:ring-terracota">
+                                <span>Ruta del Adobe</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Pasajeros y Fecha -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="pasajeros" class="block text-xs font-bold text-gray-700 uppercase mb-1">Cantidad de Pasajeros</label>
+                            <select id="pasajeros" class="w-full bg-arena border border-arena-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-terracota">
+                                <option value="1 a 2 Pasajeros">1 a 2 Pasajeros</option>
+                                <option value="3 a 4 Pasajeros">3 a 4 Pasajeros</option>
+                                <option value="Grupo Familiar (5+)">Grupo (5 o más personas)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="fecha" class="block text-xs font-bold text-gray-700 uppercase mb-1">Fecha Estimada de Arribo</label>
+                            <input type="date" id="fecha" required class="w-full bg-arena border border-arena-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-terracota">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="nombre" class="block text-xs font-bold text-gray-700 uppercase mb-1">Tu nombre <span class="font-normal normal-case text-gray-500">(opcional)</span></label>
+                            <input type="text" id="nombre" autocomplete="name" maxlength="80" placeholder="¿Cómo te llamás?" class="w-full bg-arena border border-arena-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-terracota">
+                        </div>
+                        <div>
+                            <label for="vuelo" class="block text-xs font-bold text-gray-700 uppercase mb-1">Aerolínea y número de vuelo <span class="font-normal normal-case text-gray-500">(opcional)</span></label>
+                            <input type="text" id="vuelo" autocomplete="off" maxlength="40" placeholder="Ej.: AR 1450" class="w-full bg-arena border border-arena-dark rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-terracota">
+                        </div>
+                    </div>
+
+                    <!-- Botón Submit -->
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 text-base">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Enviar consulta a WhatsApp</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Widget Flotante de WhatsApp -->
+    <a href="https://wa.me/5493834571075" target="_blank" rel="noopener noreferrer" aria-label="Consultar a Horizontes de Altura por WhatsApp" class="fixed bottom-6 right-6 z-50 bg-emerald-700 hover:bg-emerald-800 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center gap-2 group">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold pr-1">Consultar a WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <img src="img/logo/horizontes/horizonteslogo-transparente.png" alt="Horizontes de Altura · Catamarca · Argentina" class="mx-auto h-40 sm:h-48 w-40 sm:w-48 rounded bg-[#F3EEE7] p-2 object-contain">
+            <p class="text-sm font-serif italic text-gray-300">El camino es parte del destino</p>
+            <p class="text-xs text-gray-400">Turismo · Traslados privados · Experiencias 4x4</p>
+            <p class="text-xs text-gray-500 font-medium">WhatsApp: +54 9 383 457-1075</p>
+            <p class="text-xs text-gray-600">© 2026 Horizontes de Altura. Catamarca, Argentina.</p>
+        </div>
+    </footer>
+
+    <!-- Script de Inicialización e Interacción -->
+    <script>
+        lucide.createIcons();
+
+        const fechaInput = document.getElementById('fecha');
+        const hoy = new Date();
+        const fechaLocal = new Date(hoy.getTime() - hoy.getTimezoneOffset() * 60000)
+            .toISOString()
+            .slice(0, 10);
+        fechaInput.min = fechaLocal;
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            const updateMenuIcon = (isOpen) => {
+                const icon = mobileMenuBtn.querySelector('i');
+                if (!icon) return;
+
+                icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+                lucide.createIcons();
+            };
+
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+                mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+                mobileMenu.classList.toggle('hidden');
+                updateMenuIcon(!isOpen);
+            });
+
+            mobileMenu.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    updateMenuIcon(false);
+                });
+            });
+        }
+
+        function sendWhatsApp(event) {
+            event.preventDefault();
+            
+            const phone = "5493834571075";
+            const aeropuerto = document.querySelector('input[name="aeropuerto"]:checked').value;
+            const pasajeros = document.getElementById('pasajeros').value;
+            const fecha = document.getElementById('fecha').value;
+            const nombre = document.getElementById('nombre').value.trim() || 'No indicado';
+            const vuelo = document.getElementById('vuelo').value.trim() || 'No indicado';
+            const fechaLegible = new Intl.DateTimeFormat('es-AR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }).format(new Date(`${fecha}T12:00:00`));
+            
+            const puntosSeleccionados = Array.from(document.querySelectorAll('input[name="puntos"]:checked'))
+                .map(cb => cb.value);
+            
+            const destino = document.getElementById('destino').value.trim();
+            const puntosTexto = puntosSeleccionados.length > 0
+                ? puntosSeleccionados.join(', ')
+                : 'Sin paradas adicionales seleccionadas';
+
+            const mensaje = `Hola *Horizontes de Altura*, quisiera consultar por un traslado o experiencia:
+            
+📍 *Origen:* ${aeropuerto}
+🧭 *Destino:* ${destino}
+🙋 *Nombre:* ${nombre}
+👥 *Pasajeros:* ${pasajeros}
+✈️ *Vuelo:* ${vuelo}
+📅 *Fecha de Arribo:* ${fechaLegible}
+🏔️ *Lugares de interés:* ${puntosTexto}
+
+Quisiera consultar disponibilidad, itinerario y condiciones. ¡Muchas gracias!`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+    </script>
+</body>
+</html>
