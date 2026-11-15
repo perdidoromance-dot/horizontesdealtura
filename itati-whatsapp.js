@@ -18,11 +18,12 @@
         const current = lastControl.closest('.bpMessageContainer');
         const index = messages.indexOf(current);
         const preceding = messages.slice(0, index + 1).reverse();
-        const summaryMessage = preceding.find(message => /resumen/i.test(cleanText(message)));
+        const label = /(?:resumen(?: de (?:tu|la) consulta)?|consulta con tina)\s*:\s*/i;
+        const summaryMessage = preceding.find(message => label.test(cleanText(message)));
         let summary = summaryMessage ? cleanText(summaryMessage) : '';
         if (summary) {
-            summary = summary.slice(summary.toLowerCase().indexOf('resumen'))
-                .replace(/^resumen(?: de (?:tu|la) consulta)?\s*:?\s*/i, '')
+            const match = label.exec(summary);
+            summary = summary.slice(match.index + match[0].length)
                 .replace(/(?:revis[aá] el mensaje|vas a poder revisar)[\s\S]*$/i, '').trim();
         }
         if (!summary) {
@@ -84,39 +85,98 @@
         }));
     }
 
-    let chatInitialized = false;
+    // One widget, one loading sequence, no new page or popup for Tina.
+    let ready = false;
+    let opened = false;
+    let pendingOpen = location.hash === '#tina';
+    let bootPromise = null;
     let eventsBound = false;
-    const standalone = document.body.hasAttribute('data-tina-page');
-    function bindChatEvents() {
-        if (eventsBound || typeof window.botpress?.on !== 'function') return;
-        eventsBound = true;
-        window.botpress.on('webchat:initialized', () => {
-            chatInitialized = true;
-            const status = document.getElementById('tina-status');
-            if (status) status.textContent = 'Tina está lista para conversar.';
-            const open = document.getElementById('tina-open');
-            if (open) open.disabled = false;
-            if (standalone) window.botpress.open();
-        });
-        document.getElementById('tina-open')?.addEventListener('click', () => {
-            if (chatInitialized) window.botpress.open();
+    let slowTimer;
+    const feedback = document.createElement('p');
+    feedback.id = 'tina-feedback';
+    feedback.setAttribute('role', 'status');
+    feedback.hidden = true;
+    feedback.style.cssText = 'position:fixed;right:16px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:2147483000;max-width:260px;padding:12px 16px;border:1px solid #d8c9b8;border-radius:16px;background:#fffaf3;color:#4a2818;font:14px/1.5 Arial,sans-serif;box-shadow:0 4px 16px #0002;';
+    document.body.append(feedback);
+    function showFeedback(text) {
+        feedback.textContent = text;
+        feedback.hidden = !text;
+    }
+    function updateOpeners(state) {
+        document.querySelectorAll('[data-open-itati]').forEach(button => {
+            button.setAttribute('aria-expanded', String(opened));
+            button.setAttribute('aria-busy', String(state === 'loading'));
+            const detail = button.querySelector('small');
+            if (detail) detail.textContent = state === 'loading' ? 'Cargando…' : state === 'error' ? 'Reintentar' : opened ? 'Cerrar chat' : 'Asistente con IA';
         });
     }
-    bindChatEvents();
-    window.addEventListener('load', bindChatEvents, { once: true });
-
+    function loadScript(id, src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.id = id;
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = () => { script.remove(); reject(new Error('No se pudo cargar Tina.')); };
+            document.head.append(script);
+        });
+    }
+    function openChat() {
+        if (!ready || typeof window.botpress?.open !== 'function') return;
+        try {
+            window.botpress.open();
+            pendingOpen = false;
+            clearTimeout(slowTimer);
+            showFeedback('');
+        } catch (_) {
+            showFeedback('Tina no pudo abrirse. Volvé a tocar el botón para reintentar.');
+        }
+    }
+    function bindBotpress() {
+        if (eventsBound) return;
+        eventsBound = true;
+        window.botpress.on('webchat:initialized', () => {
+            ready = true;
+            clearTimeout(slowTimer);
+            updateOpeners('ready');
+            showFeedback('');
+            if (pendingOpen) openChat();
+        });
+        window.botpress.on('webchat:opened', () => { opened = true; updateOpeners('ready'); });
+        window.botpress.on('webchat:closed', () => { opened = false; updateOpeners('ready'); });
+    }
+    async function boot() {
+        if (bootPromise) return bootPromise;
+        bootPromise = (async () => {
+            // Subscribe before loading the configuration, so initialization
+            // cannot finish before the opening listener is registered.
+            if (!window.botpress) await loadScript('tina-botpress-library', 'https://cdn.botpress.cloud/webchat/v3.7/inject.js');
+            bindBotpress();
+            await loadScript('tina-botpress-configuration', 'https://files.bpcontent.cloud/2026/11/15/14/20261115141839-B57OU4BF.js');
+        })().catch(() => {
+            bootPromise = null;
+            updateOpeners('error');
+            showFeedback('No se pudo cargar Tina. Tocá su botón para reintentar.');
+        });
+        return bootPromise;
+    }
     document.addEventListener('click', event => {
         const opener = event.composedPath().find(node => node instanceof Element && node.matches('[data-open-itati]'));
-        if (opener && chatInitialized && typeof window.botpress?.open === 'function') {
-            // Only cancel the native fallback once the embedded chat can open.
-            try {
-                window.botpress.open();
-                event.preventDefault();
-            } catch (_) { /* Native href opens the same Botpress AI directly. */ }
+        if (!opener) return;
+        event.preventDefault();
+        if (ready) {
+            if (opened) window.botpress.close(); else openChat();
+            return;
         }
-        // The send anchor uses the browser's normal link handling. Do not turn
-        // this click into a quick reply or call window.open asynchronously.
-    }, true);
+        pendingOpen = true;
+        updateOpeners('loading');
+        showFeedback('Tina está cargando. El chat se abrirá acá en cuanto esté listo.');
+        clearTimeout(slowTimer);
+        slowTimer = setTimeout(() => {
+            if (!ready) showFeedback('Tina está tardando en cargar. Revisá tu conexión; el chat se abrirá acá cuando esté listo.');
+        }, 15000);
+        boot();
+    });
 
     let scheduled = false;
     const observer = new MutationObserver(() => {
@@ -126,4 +186,5 @@
     });
     observer.observe(document.body, { childList: true, subtree: true });
     renderSendButton();
+    boot();
 })();
