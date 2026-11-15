@@ -1,5 +1,0 @@
-"$schema" = "https://open-api.netlify.com/netlify.schema.json"
-
-# The static site lives at the repository root; there is no generated public directory.
-[build]
-  publish = "."
