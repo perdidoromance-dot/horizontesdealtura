@@ -1,0 +1,5 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+# The static site lives at the repository root. Keep production settings unchanged.
+[context.deploy-preview]
+  publish = "."
