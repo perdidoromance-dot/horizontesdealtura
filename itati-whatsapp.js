@@ -1,4 +1,4 @@
-/* One native WhatsApp handoff form per conversation. No modal, popup script or auto-send. */
+/* One direct WhatsApp link per conversation, shared with every contact entry point. No modal, popup script or auto-send. */
 (() => {
     'use strict';
     const contact = 'https://wa.me/5493834571075';
@@ -67,32 +67,22 @@
             const container = last.closest('.bpMessageContainer');
             if (!container) return;
             const url = consultationUrl(viewport, last);
-            const message = new URL(url).searchParams.get('text');
             let send = viewport.querySelector('[data-itati-send]');
             let row = viewport.querySelector('[data-itati-send-row]');
             if (!send) {
-                // Submit the complete plain-text message using the browser's
-                // native form navigation, rather than a link rendered by chat.
-                row = document.createElement('form');
+                row = document.createElement('div');
                 row.dataset.itatiSendRow = 'true';
-                row.method = 'get';
-                row.action = contact;
-                row.target = '_blank';
-                row.acceptCharset = 'UTF-8';
-                row.setAttribute('aria-label', 'Enviar el resumen del viaje por WhatsApp');
                 row.style.cssText = 'display:block;box-sizing:border-box;width:100%;padding:0 0 0 36px;';
-                const textField = document.createElement('input');
-                textField.type = 'hidden';
-                textField.name = 'text';
-                send = document.createElement('button');
-                send.type = 'submit';
+                send = document.createElement('a');
                 send.dataset.itatiSend = 'true';
                 send.textContent = 'Enviar consulta';
-                send.style.cssText = 'display:block;box-sizing:border-box;width:100%;margin:12px 0 4px;padding:14px 18px;border:0;border-radius:12px;background:#087b51;color:#fff;text-align:center;cursor:pointer;font:600 15px/1.5 Arial,sans-serif;';
-                row.append(textField, send);
+                send.target = '_blank';
+                send.rel = 'noopener noreferrer external';
+                send.style.cssText = 'display:block;box-sizing:border-box;width:100%;margin:12px 0 4px;padding:14px 18px;border-radius:12px;background:#087b51;color:#fff;text-decoration:none;text-align:center;font:600 15px/1.5 Arial,sans-serif;';
+                row.append(send);
             }
             if (container.nextElementSibling !== row) container.after(row);
-            row.elements.namedItem('text').value = message;
+            send.href = url;
             // All general contact entry points must carry the same trip.
             // A traveller can use the left button or menu after talking to Tina.
             document.querySelectorAll('a[href^="https://wa.me/5493834571075"]').forEach(link => {
