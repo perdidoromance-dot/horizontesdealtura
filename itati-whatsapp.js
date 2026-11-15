@@ -5,7 +5,7 @@
     const selector = '.bpMessageBlocksTextLink, .bpMessageBlocksButton';
     const roots = new Set([document]);
     const normalise = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    const isHandoff = node => node.matches(selector) && /whats\s*app/.test(normalise(node.textContent || ''));
+    const isHandoff = node => node.matches(selector) && /whats\s*app|^enviar consulta$/.test(normalise(node.textContent || '').trim());
 
     function cleanText(message) {
         const copy = message.cloneNode(true);
@@ -31,7 +31,7 @@
             summary = messages.filter(message => message.getAttribute('direction') === 'outgoing')
                 .map(cleanText).filter(Boolean).slice(-8).join('\n');
         }
-        const text = 'Hola, conversé con Itatí de Horizontes de Altura.'
+        const text = 'Hola, conversé con Tina de Horizontes de Altura.'
             + (summary ? '\n\n' + summary.slice(0, 3500) : '\nQuisiera consultar por un viaje.');
         return contact + '?text=' + encodeURIComponent(text);
     }
