@@ -1,4 +1,4 @@
-/* One direct WhatsApp link per conversation, shared with every contact entry point. No modal, popup script or auto-send. */
+/* One direct WhatsApp link per conversation, shared with every contact entry point. Same-tab handoff; no popup or auto-send. */
 (() => {
     'use strict';
     const contact = 'https://wa.me/5493834571075';
@@ -76,7 +76,16 @@
                 send = document.createElement('a');
                 send.dataset.itatiSend = 'true';
                 send.textContent = 'Enviar consulta';
-                send.target = '_blank';
+                send.target = '_self';
+                // Handle the traveller's tap synchronously, outside React's
+                // delegated link handling. Same-tab navigation avoids popup
+                // restrictions in embedded and mobile browsers.
+                send.addEventListener('click', event => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    window.location.assign(send.href);
+                }, { capture: true });
                 send.rel = 'noopener noreferrer external';
                 send.style.cssText = 'display:block;box-sizing:border-box;width:100%;margin:12px 0 4px;padding:14px 18px;border-radius:12px;background:#087b51;color:#fff;text-decoration:none;text-align:center;font:600 15px/1.5 Arial,sans-serif;';
                 row.append(send);
