@@ -45,7 +45,8 @@
         if (chatRoot && !chatRoot.querySelector('[data-itati-controls-style]')) {
             const style = document.createElement('style');
             style.dataset.itatiControlsStyle = 'true';
-            const avatar = document.querySelector('#itati-launcher img').src;
+            const avatar = document.querySelector('[data-tina-avatar]')?.src;
+            if (!avatar) return;
             style.textContent = `.bpFabWrapper, .bpFABMessagePreview { display:none !important; }
                 .bpHeaderContentAvatarFallback, .bpMessageAvatarFallback, .bpMessageListMarqueeAvatarFallback {
                   color:transparent !important;background:center/cover no-repeat url("${avatar}") !important; }`;
@@ -73,8 +74,8 @@
                 send = document.createElement('a');
                 send.dataset.itatiSend = 'true';
                 send.textContent = 'Enviar consulta';
-                send.target = '_self';
-                send.rel = 'noopener noreferrer';
+                send.target = '_blank';
+                send.rel = 'noopener noreferrer external';
                 send.style.cssText = 'display:block;box-sizing:border-box;width:100%;margin:12px 0 4px;padding:14px 18px;border-radius:12px;background:#087b51;color:#fff;text-decoration:none;text-align:center;font:600 15px/1.5 Arial,sans-serif;';
                 row.append(send);
             }
@@ -83,9 +84,30 @@
         }));
     }
 
+    let chatInitialized = false;
+    let eventsBound = false;
+    const standalone = document.body.hasAttribute('data-tina-page');
+    function bindChatEvents() {
+        if (eventsBound || typeof window.botpress?.on !== 'function') return;
+        eventsBound = true;
+        window.botpress.on('webchat:initialized', () => {
+            chatInitialized = true;
+            const status = document.getElementById('tina-status');
+            if (status) status.textContent = 'Tina está lista para conversar.';
+            const open = document.getElementById('tina-open');
+            if (open) open.disabled = false;
+            if (standalone) window.botpress.open();
+        });
+        document.getElementById('tina-open')?.addEventListener('click', () => {
+            if (chatInitialized) window.botpress.open();
+        });
+    }
+    bindChatEvents();
+    window.addEventListener('load', bindChatEvents, { once: true });
+
     document.addEventListener('click', event => {
         const opener = event.composedPath().find(node => node instanceof Element && node.matches('[data-open-itati]'));
-        if (opener && typeof window.botpress?.open === 'function') {
+        if (opener && chatInitialized && typeof window.botpress?.open === 'function') {
             // Only cancel the native fallback once the embedded chat can open.
             try {
                 window.botpress.open();
