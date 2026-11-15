@@ -51,8 +51,12 @@
     let activeSlot = null;
     let activeClip = null;
     let positioning = false;
+    let animationUntil = 0;
     function positionSendButton() {
         positioning = false;
+        // Botpress moves the panel with a transform. ResizeObserver does not
+        // report that movement, so follow the short opening transition too.
+        if (opened && performance.now() < animationUntil) schedulePosition();
         if (!opened || !activeSlot?.isConnected || !activeClip?.isConnected) {
             send.hidden = true;
             return;
@@ -78,6 +82,10 @@
         positioning = true;
         requestAnimationFrame(positionSendButton);
     }
+    function followTransition() {
+        animationUntil = performance.now() + 700;
+        schedulePosition();
+    }
     const observedSizes = new WeakSet();
     const sizes = typeof ResizeObserver === 'function' ? new ResizeObserver(schedulePosition) : null;
     function observeSize(node) {
@@ -96,6 +104,10 @@
             roots.add(chatRoot);
             observer.observe(chatRoot, { childList: true, subtree: true });
             chatRoot.addEventListener('scroll', schedulePosition, { passive: true, capture: true });
+            chatRoot.addEventListener('transitionrun', followTransition, true);
+            chatRoot.addEventListener('transitionend', schedulePosition, true);
+            chatRoot.addEventListener('animationstart', followTransition, true);
+            chatRoot.addEventListener('animationend', schedulePosition, true);
         }
         if (chatRoot && !chatRoot.querySelector('[data-itati-controls-style]')) {
             const style = document.createElement('style');
@@ -206,7 +218,7 @@
             showFeedback('');
             if (pendingOpen) openChat();
         });
-        window.botpress.on('webchat:opened', () => { opened = true; updateOpeners('ready'); schedulePosition(); });
+        window.botpress.on('webchat:opened', () => { opened = true; updateOpeners('ready'); followTransition(); });
         window.botpress.on('webchat:closed', () => { opened = false; send.hidden = true; updateOpeners('ready'); });
     }
     async function boot() {
