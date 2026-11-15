@@ -42,6 +42,15 @@
             roots.add(chatRoot);
             observer.observe(chatRoot, { childList: true, subtree: true });
         }
+        if (chatRoot && !chatRoot.querySelector('[data-itati-controls-style]')) {
+            const style = document.createElement('style');
+            style.dataset.itatiControlsStyle = 'true';
+            const avatar = document.querySelector('#itati-launcher img').src;
+            style.textContent = `.bpFabWrapper, .bpFABMessagePreview { display:none !important; }
+                .bpHeaderContentAvatarFallback, .bpMessageAvatarFallback, .bpMessageListMarqueeAvatarFallback {
+                  color:transparent !important;background:center/cover no-repeat url("${avatar}") !important; }`;
+            chatRoot.append(style);
+        }
         roots.forEach(root => root.querySelectorAll('.bpMessageListViewport').forEach(viewport => {
             const controls = Array.from(viewport.querySelectorAll(selector)).filter(isHandoff);
             if (!controls.length) return;
@@ -64,7 +73,7 @@
                 send = document.createElement('a');
                 send.dataset.itatiSend = 'true';
                 send.textContent = 'Enviar consulta';
-                send.target = '_blank';
+                send.target = '_self';
                 send.rel = 'noopener noreferrer';
                 send.style.cssText = 'display:block;box-sizing:border-box;width:100%;margin:12px 0 4px;padding:14px 18px;border-radius:12px;background:#087b51;color:#fff;text-decoration:none;text-align:center;font:600 15px/1.5 Arial,sans-serif;';
                 row.append(send);
@@ -77,8 +86,11 @@
     document.addEventListener('click', event => {
         const opener = event.composedPath().find(node => node instanceof Element && node.matches('[data-open-itati]'));
         if (opener && typeof window.botpress?.open === 'function') {
-            event.preventDefault();
-            window.botpress.open();
+            // Only cancel the native fallback once the embedded chat can open.
+            try {
+                window.botpress.open();
+                event.preventDefault();
+            } catch (_) { /* Native href opens the same Botpress AI directly. */ }
         }
         // The send anchor uses the browser's normal link handling. Do not turn
         // this click into a quick reply or call window.open asynchronously.
