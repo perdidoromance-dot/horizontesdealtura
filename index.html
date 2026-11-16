@@ -196,8 +196,8 @@
             </a>
             <a href="#flota" class="hover:text-[#8B4B1F] transition-colors">Vehículos</a>
                         <a href="#videos" class="hover:text-[#8B4B1F] transition-colors">Videos</a>
-                        <a href="#cotizador" class="bg-[#8B4B1F] hover:bg-[#673515] text-white px-5 py-2.5 rounded-xl font-bold shadow-sm transition-all">
-                            Consultar recorrido
+                        <a target="_blank" rel="noopener noreferrer external" href="https://wa.me/5493834571075?text=Hola%2C%20Horizontes%20de%20Altura.%20Quisiera%20consultar%20por%20un%20traslado%20o%20una%20excursi%C3%B3n%20en%20Catamarca." class="bg-[#8B4B1F] hover:bg-[#673515] text-white px-5 py-2.5 rounded-xl font-bold shadow-sm transition-all">
+                            Consultar por WhatsApp
             </a>
           </nav>
 
@@ -216,8 +216,8 @@
         <a href="#door-to-door" class="block py-2 text-xs uppercase font-bold text-[#8B4B1F]">Cómo organizamos tu recorrido</a>
         <a href="#flota" class="block py-2 text-xs uppercase font-medium text-stone-800">Vehículos</a>
         <a href="#videos" class="block py-2 text-xs uppercase font-medium text-stone-800">Videos</a>
-                <a href="#cotizador" class="block text-center bg-[#8B4B1F] text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider mt-2">
-                    Consultar recorrido
+                <a target="_blank" rel="noopener noreferrer external" href="https://wa.me/5493834571075?text=Hola%2C%20Horizontes%20de%20Altura.%20Quisiera%20consultar%20por%20un%20traslado%20o%20una%20excursi%C3%B3n%20en%20Catamarca." class="block text-center bg-[#8B4B1F] text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider mt-2">
+                    Consultar por WhatsApp
         </a>
       </div>
     </header>
@@ -275,7 +275,7 @@
                             <i data-lucide="calculator" class="w-5 h-5"></i>
                             <span>Consultar mi recorrido</span>
                         </a>
-                        <a href="https://wa.me/5493834571075" target="_blank" rel="noopener noreferrer" class="premium-btn-success w-full sm:w-auto text-white font-semibold px-6 py-4 rounded-xl border border-emerald-500 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm text-base">
+                        <a target="_blank" rel="noopener noreferrer external" href="https://wa.me/5493834571075" class="premium-btn-success w-full sm:w-auto text-white font-semibold px-6 py-4 rounded-xl border border-emerald-500 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm text-base">
                             <i data-lucide="phone" class="w-5 h-5"></i>
                             <span>Hablar por WhatsApp</span>
                         </a>
@@ -521,7 +521,7 @@
             Compartinos origen, destino, fecha e intereses. Horizontes de Altura confirma disponibilidad, itinerario y condiciones antes de que reserves.
           </p>
           <div class="flex justify-center">
-            <a href="#cotizador" class="inline-flex items-center gap-2 bg-[#5A3127] hover:bg-[#3D221C] text-white font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition-all shadow-md">
+            <a target="_blank" rel="noopener noreferrer external" href="https://wa.me/5493834571075?text=Hola%2C%20Horizontes%20de%20Altura.%20Quisiera%20consultar%20por%20un%20traslado%20o%20una%20excursi%C3%B3n%20en%20Catamarca." class="inline-flex items-center gap-2 bg-[#5A3127] hover:bg-[#3D221C] text-white font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition-all shadow-md">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
               Consultar por WhatsApp
             </a>
@@ -583,7 +583,7 @@
               Escribinos para consultar tu traslado o experiencia. Te responderemos con la información disponible y los pasos para confirmar la reserva.
             </p>
           </div>
-          <a href="#cotizador" class="shrink-0 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md">
+          <a target="_blank" rel="noopener noreferrer external" href="https://wa.me/5493834571075?text=Hola%2C%20Horizontes%20de%20Altura.%20Quisiera%20consultar%20por%20un%20traslado%20o%20una%20excursi%C3%B3n%20en%20Catamarca." class="shrink-0 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md">
             Iniciar consulta
           </a>
         </div>
@@ -760,7 +760,7 @@
                     <p class="text-sm text-gray-600">Contanos qué viaje tenés en mente y consultá disponibilidad directamente con Horizontes de Altura por WhatsApp (<strong>+54 9 383 457-1075</strong>).</p>
                 </div>
 
-                <form id="transferForm" onsubmit="sendWhatsApp(event)" class="space-y-6">
+                <form id="transferForm" action="https://wa.me/5493834571075" method="get" target="_blank" onsubmit="return sendWhatsApp(event)" class="space-y-6"><input type="hidden" name="text" value="Hola, Horizontes de Altura. Quisiera consultar por un viaje.">
                     
                     <!-- Aeropuerto de Origen -->
                     <div>
@@ -876,11 +876,24 @@
         </div>
     </section>
 
-    <!-- Widget Flotante de WhatsApp -->
-    <a href="https://wa.me/5493834571075" target="_blank" rel="noopener noreferrer" aria-label="Consultar a Horizontes de Altura por WhatsApp" class="fixed bottom-6 right-6 z-50 bg-emerald-700 hover:bg-emerald-800 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center gap-2 group">
-        <i data-lucide="message-circle" class="w-7 h-7"></i>
-        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold pr-1">Consultar a WhatsApp</span>
+    <!-- Accesos permanentes: enlaces nativos incluso sin JavaScript. -->
+    <style>
+      .contact-launcher {cursor:pointer;position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:2147483000;display:flex;align-items:center;gap:9px;min-height:58px;padding:7px 14px 7px 8px;border:2px solid #fff;border-radius:40px;box-shadow:0 5px 22px #0004;color:#fff;text-decoration:none;font:600 14px/1.2 Arial,sans-serif;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+      .contact-launcher:focus-visible {outline:3px solid #e7b868;outline-offset:4px;}
+      #whatsapp-launcher {left:16px;background:#087b51;}
+      #itati-launcher {right:16px;background:#4a2818;}
+      #itati-launcher img {width:46px;height:46px;border-radius:50%;object-fit:cover;}
+      .contact-launcher small {display:block;font-size:10px;font-weight:400;margin-top:3px;}
+      @media(max-width:380px){.contact-launcher{font-size:12px;padding-right:10px;gap:6px;}#whatsapp-launcher{left:10px;}#itati-launcher{right:10px;}}
+    </style>
+    <a target="_blank" rel="noopener noreferrer external" id="whatsapp-launcher" class="contact-launcher" href="https://wa.me/5493834571075?text=Hola%2C%20Horizontes%20de%20Altura.%20Quisiera%20consultar%20por%20un%20traslado%20o%20una%20excursi%C3%B3n%20en%20Catamarca." aria-label="Consultar a Horizontes de Altura por WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg>
+      <span>WhatsApp<small>Enviar consulta</small></span>
     </a>
+    <button type="button" aria-expanded="false" id="itati-launcher" class="contact-launcher" data-open-itati aria-label="Conversar con Tina, asistente virtual con IA">
+      <img data-tina-avatar src="data:image/webp;base64,UklGRuAhAABXRUJQVlA4INQhAADwgACdASoAAQABPj0cjEQiIaES6F3gIAPEsrdwuUhgKV8r/G/4vnIck9wfyGIM9n6f89P/R9Z39V/1XsK/sB64/S95i/OG9Nv+K9Q7+j9Uh6BvTCf2K1t+M/6jwd8xXyf9+4hHZfmV9dP53rK/xfB3gO/ln9Y39kA/dEznusr3BfzI5Magb/Sv776QP1t6Ufrj/3e4f+wn/b9d32Xeix+3pxUPFalMyfO3L5CVz8Ms5qd4ECP7UIhvJ3/IL4WdPGu5i8zeCaTXbl8hK52eJ7fpOsZXU4LqSuuSvXPV31AZTT8/WwpPNfwLD1578zjEh1YVqUzJ8Lo2106HcWqEqOQWj+DPFUld3jPLzrJLU95fOoRUqZ6KKJMQSzMjo+ykjr6ANqjxdCeRElJT05mMFrhre9YhZD+hh4FE6uogr6JmACXYJyqJXlTrhgg0ouFm9BX0c3Dc9VfFizeIAEN/yQ0pPgjoBHvR1TGfOyJiZAsvG4HrsOYuk0kmZPSqe0dJbbxzvyF5JqOPalenGFgBz4zpojqTb3sbQ7qVCUx8amUWvmoQyLn/Z+GjV2fAOSc7dcbC6Iu/1+Q8D8Nc+CyVtaBCv3YhOWKXrRogiJE5PkEKe/M2FxQ1XpmbwKdIddOkUfK+a9ulK6HGsu/PEX54DxX8i0yC3/gdJmT5rLkB+eMWq5Y7cEi4Z+2VRNdmwAN7wMlhBKPFadaj9JVSoOIz1RbAvz6p+6a8LKa77ITX8GRWUnq9oUwGh7s0t7Gh2jBEO3fKt42JU0V5XiI1QkzbH1LFW/cpJfWJ5q7nzFot1e8TdUnC64R6Lx0kP6oHAev22bm613WCvw04AYfglarCfILdMvAl7q85vCRzq0pe8hz5exyprPeywfggLTcRJl8zeWnlmOO2qLxZzwE7GkJGYgKmWEh/hpDwhz+R90xSqXnLh/pD2iZ/rp/jc1YDJv8c+8/lLNtRSkiHkpw1QfadhJGTQ56RmBKYW3BqPGuQqjep32UoeW+GBcY7SNC08GBYOLgD/oReD0uJyyLUrDS6WZQdBvQ1ESwy41sHoVWyC67WLH/jWGIo/8CsV0y768KEk4jsH578q8tbHTHwDgAwQ0dNC7CpOESlMQBg0Qkd+WeR6Ykv6Re5E127APtxzjT2EaxkEavW32rRdBLy1pUjz2SPxUK7dB4YoEjsP3ZORtlVh2ru8KI2Z2Bvf2IAxy9rAjQEWDigN454lpgP/84m8KmxDuU5v86iGXOS3DZmeuFkyO3PeJerltIIf6+7w2h7qeM5f/GsmrQ8II7BvEZl/U4+p4MFGX7a7B7yejMNvjOuWx/d339XVH+VZWqfvZPje6J/L2UcYtrRl7K0CzcFxDUAqCKpq5GWekheVkMKkU6poAD+/6z4/9HxIxpb6r0P0QD1qA+aN+BCkZMAJsAIv4fY1zNN0/R34I1hl5vicKJ8n4KN9KH/AQ3Dvwp6P5jRHe2f67tGynqHWR9I+pYr/yz4qYqwFdc4FZk0XAw6wuNncDScr7QUjrvOINcNqsnvDktk//Fh7PlhMdamQblbcT6xs8NFw8wN2lHS6+3zjjDYsOJh68AuOCiua0Rwppe0irFw4Sq7dVRviRldu3K3R9JJZ5V0/xVtqINKFK/V/G0dfPpkXwqYXm8RXjwuiMNMTy6ttgkFZBm5u0fSBpR/iuAcvInvvDtqWhRdR6AKaFCDl/uqb0ZTAAq+EkXBTu7hsqsHIBAMBNDXuyGaf9FSgqvz9jDeQg+c2PCuVKJIRInEyQgD870Qw4K1EsxTNCdmemk/nHqLv2chk/PyNz6/veK2vent6fZlcuRF+zqXk74JvHqpJdHOCiiWlRzTEkihq3JL6dkTXATSo/MtufiWBrv1r2Mf9jJhTDr1G5MviMfHm43CAnzpUqaZ+ZmkaO2i0TifaYnzhrUBzXl679hJmUeNo0q9Y32TSlPYq+K6jsEqmvcx9pt8HtaS5TaldsOkyoIl9gT5KRHBcDduA8YCXAh2ZM+a2n+IijDOfLDF++KgdKwAWgotTTqbE9LaaumyxdNFUMtvYQa62uijBCao1WOjpATump4B80NtCJWlF224aozU21713vl9PdM1ps99x/AQPj/jdrHBCmwHsW8tEfWQE8GzGAjSFGp7IUBriiX6AZFZSzZKRbNLhXWQmexPGa3S5rizyQJk08BUnyj5zE5LqlE17Md1naGB1mPKCFAPWKK2TZblA5gArrO+8hK66YQsN4P2W/6CrxOslz+NZYkXZJb3Tj1usCV3iVJ5JSxkeLiQ//JXueKTdcCh1NZWVuIBAYMVNlfqbFLbgp+sKgH4c2Bm+CJzPdakLmqCYk3wIGD1DkeRRGcO8+XCjnNRxKdu6jsXqoQf/H4fGIN8PWzbwvn/F3mIRcx5F2H9ZqSQltXK5JxL/dDQMKWj4QBqE1199dyZ9YXZ0jZssNH+6xpv6VOiXtNoBPRtZoFkd4gOrDkbvqL/WilKQaIdiluYOgheV39exCLJXLE2RVx+zVd62V8EaVbJsACdr2H81E0+gI0teUOxnOFzaPOM9N71niRkzho8kzGdfhj7ih6qoJm3qNm/0qrdVsRwmhe0HbRg0i2ZJb2l1eZktlZBQpIvDA7nB7GyAFyBdAQV4XhJmxOHQlYFLRrEekiBpP8GxTjG0MAWCMUZ5uCPjPg6+swg8TTDhZeyN8lBjKiSZAyXqxIVGzQ2auWw8AQk7AGV6DhUw5bnFaW+oK261ZbPO67dNGBM7Tu0IKWt/Pthh0Wa8VTNQNXma/es4DNgykMrMYQ782Cnq05HTkTnvjAyE1ZyZ43xoZq1065JxbgzXjuTw0eUSSFGEUwTY5ck1HUXSg209z/BBrqebYzxCUd7NywBrZsFTh2iTHMnR+TV6jR8KoiSJ6JKt4q62VX+fMuLTGcWf0hoVnsmB+dOutdTS8gwwFVIygaM3Pg0mWlrjirfgwk1ogvKusq/+Lusgy7fzjc1bZqIgd0gJuEVhRYRCj0omaAexsFP+HOhJUlPZ0T8SNCeo7o6xR0XaAMK6KBZ8ZNZVgpvc+sgLu+j2rtXchFswW2wQNrfMJ0IZYivpvbecNdixiOaPZWUzvG1M8TN46UpcwsrKOXLi92lVROBvn/NGJMQyv7AQNA48mu2y8IgOewtDLs9dTZyYWktDSX5r4M5sr35lkNWpvHFWbWPQFFyskvUMPKRy+YZ4wK6K1ncEWvfpU7+EKYFs4QzPgVWn0j/6FDOK77s2Oyvv2WZv+FJ1czPyITaVSKvjKT+iJ5st+FPGnMIdXc+LRQKKxT3uFHgyGFETnDiYSItmAWSUSVkWjXIHORaywa3BcOk98ti56IAAa7+UzCxJG1R8c4lj2Zb1RuD5vtBkzqkbWeCSjMYhtB7+wkvj/RZpTCOtvfo2pFf8ugtlD2NH9BmoWubSRXe3rbJqtRDgCo02Lf8Hxs0zXS9tJ30UdAd90NoCnbMUM5GvfCPgaRlqed+p/sZWdJiDwVSYLYxSmeQtGODmed5GU9TWPHd+UE6wbtdgWlbFdeGKn8g7fQ2sSqZiX8peKE3pYUwkz84qUbeKvwGMhfvIMzCYILmpO+4V1Yr6t1uhlLg2/v5vxFu5VM+yD0BipuufxMiCx8hWL3UNw3T860dT7bUyLKg3zIP16O2ZAYuJ7lzwafQmvGjtBkE+ECZP1PRBpUUKZjWtP6XeVl5ND5Rg7ebkRF6fV9w95s/ULeuYeMAKzCGkLd+ARcJ9VX1Rg6nBygKdF3w+ho4nUmd1N+l18j07N+VYKEhQFc/REKLn7H6YfMrSo6sxxcQis4Ktk69NxsMD/SNIlNzjnmjd4vFuXl+YVTL7IXdDf/WwZwGg1uDMvq43Egq6EhOSqgJTnLBh/SrFn53/N5RPBvEMMDdsZAhtMMFv7cl245z8g6UeO84zTbPsn1CJg/t75MXHKB0vGmpzrVwHly3SC/vFireMktV1JR6G/9im8jwhzX990o1bPkrr91LH3WuoGWmSVrbp6eCrQx5olvVbhgkCd2TjUGRjz3Ff4T6vRbpQfx9N7/9Lj73TXqexwXrDR49mt+1qGDImg+1gXXnoUsmS1vLg4ARuYbVV9xHApNEmYAAHLojZACZMXynCGQoXzqflpbJCGx8oW3pmUnt38Snfz223ZZCN1PUXlc43q6I0jqlig0UTwS1o8o7ZwGcQSQW0bex9afNaEkgFPbmVJJN4Sjt88ccVXI/crdlyhaXycUDLZVukQ7v+MIl9foJwmuTmQpLYXjF8Ij85BHhvmSe024QvOm4+Riells0yGTgzyzxdWVaaBah0RLJMoQqAhUESqTOOXIonvqF6bWVLLM0NFCqMqbLysiQFlMRkNQQdWSqy44riNDXGJMg/aJA8OlX4U3+zgjjVKU7MBN/k0ttDCsUvkB21qQSpccsMRv423ClgxZQp2PAwFE+txge8m3ALVBpPDYWb0DpuNqxKHbBXGSXllkzIU0aVwG0UaU6TYesMu2ZgR+4z0vSF8l4IIxNfCb5Y9rA77jXnseiycIaVpMEMU6U1UomB0Gp0DHWvPq6MXz5t6FWJmycjAGDW1bt9Kx8k74gFefGRJL76sxLgD6IJEUFDaPIOqAfbxNfCFUTfXVIReuPg5v8KsexvOH9D7Qil1HelDH0lI/TqqyDd08EHxFn7S0fnrjdOir3AodYYVZuJr432xnUjIL38WHFt/4Y8EBXd06Y9FF0Noq/yXQoZVtDb5jd89x6GE/RrHXZszlTbHtg3J/J01hJG6mxPK69GOnc1zcYYLedsqid9iOusYLFvw9yzVixo39CXbkuG34xH/+7Uj1/4Pjsk5tI8i5ubHC/o1763SmF2V9Arol5rHEylmp+ZpFES18PnlJN/Mo+xxIB/FCDrnCe9J6dFQBgFYt+YyeVQ29/TbiH+iC4mAiXVHPetP7UzoWwhzxAqWixUS01yenat5DzrW6c3xsGr2//PTStYP27qimfERdZiQj+8GhIvPJBsUGGkTfm6QwyxhidHVRy4jgiYRYMsk6tc+/EAPrSqiW5QREdy05lMPUaiUamFNlQAOP48+TWTtCKO+nctWRJjf1Zs+bur1qoI2fwI3VQwF+iAXdNQ9/ZSpFkvpVvfn2i8a/gvZIQa3HAkVYt4b6Mygjx/Y/IxRM4yfMoZrHEi2mjeuan66+f9EcsCPHFX8cggQ5glWuvUenW7LfTfELT0KgiiF687F0eKf7Q9eYN5U2/baq2MCixBrYqnpZnCWDyz1zRisFXDu4BXXss/qDcwxYRfoq8J15OxW/j/jl8u843ciNL2u0rDkPAG8U0nH2PXe9rDbA2Fn65KH6zWYNUs22oF74PjTgHaBmBgZCBWobrHhV18/7YVSz4a5NEvtnv519ekxlOym6hpkXj91KbZ7uFouQ4R++4/gikqgsKn5uP/tqqqVp5ovbMm/aoQpI8rfDqkYMVEq8vJ2LXesexyAJEU1mKAYw/n/yccE0eF/z+ake6f8TsHKKSv13/MAdJrRC9mdm4MAQqdGNN23gqI/OTdtxsjOjSSC6DGgih8PvGKK1A8+MwSo7Axj2Bk2L0Fv1INkzOesHIHaRt//yWu39uTSqluVPZPln+izN64K5MGghKfaYyl2zaq8C8WReNczJWiFlgoY31k0/ne8nRVjj0xuTTrFV2NEiHzs5tv4+M1bcf75WyhtX0MXUnFBMZkLvZaPOvwPr5bTWPZcTFfRy77AeKA6LNScGnOf8kqrEVslqiYRtdCpF3AGPjLBklmsGs16lYJrz2eYNUF19l3OrU3XBTznQKObfJEVL1a2m5LW2GecT3Yn25RjmEt4QBD/gB2BQNWmG4shSlOCQuKSzWmCmBXFsSr1hfZfQbK5a6fhZeZp2j1OHJ/JGv34AnlhApzSEbbivzrdSv0iRRx0SBD6od+q0P5AtGtjFg/fEDI62xAVXKzncUmiFYA4S4GVoOTNHD45v8fY1AniBT4zDH2D6hcb+DA5K6i/u0m09qMw6lpl898Lj+UjHQr1///ryWwr6KZLbIU6D/wXQdqY9E6Id0uddxteNjeEyeiGn8fKVvLsJ6FNxHaezPMmbc3lS72HAy0l1kK/4/WZTCRUj7v+MMvjKAYQGvspTOY/09bWcUSc2pQmVlcHpr/OX+q/ylQaT3UZxUOD5isackWRx/ctzTx7+4x0bbf4+WIXHC+k5itTETz/gn/g7iBRk48VuwKRX+8G3viafkyPDZR0bj8k5oZyAA1NIkMN6LFNEs4eg507wRlfPES2ct81jwkWEdZTcvupIfBeoVMXDhgO5RYEupdipFkHq9YCED8Gwa4IQm8tG117Q6oKPUEJJY/rAh/bVSnSTwjf8L30nKnT8Qun1M892o4NQNSAoVE4T3KB9iv2iu0iXrV7dJu2C14UisgpIKHYYVTkxE7gjcn0B9u/fubpXaR+KDTFGiqP9qPCVevaBuTntdNtU9C2hMlmTk+AM3NdLld9dR8yWm20H7EJJVPGtbFxhbobCgNtEcuQCGxsWw6F8Hi31yfSxzFmDTsCoy13oRkZ05NW43aO0p1luQNnRemhCJ3hzIImxr9e4BwcudnYuM7msqsOEdBo2QYzYJND6kJAiL4RcO/k70xrPJvyPPMNGMnJ67/1QTp8HkpcTIKZQf30DNBQS5ufUOWRj25OMaM/1NQHOMTdzabs1ejuu8KoUIL7zVbcYwGJ1chOL6OdAMFs8CKGdhLyU5pL+SbWN63ru3LyIk4hSCUg/JCWL3gM584axgspGbgj7qTNLsxg510PDwPMJnNLUp+sxWo76yv1doING9Wbd0Np+amnW/8VNVRE+iSA1+5uxOScfLlWOuZuAryyMIBLSerDgmc356UbMl5DWRzHq/yeh7Kzj4hzncfe+ERkRelrrpRoeig3oiAZKLEl7xM3+TK1bgGlt3MEFrRJxPwnIblLhgOMl3L1hykQ+2RwOx52J9pzh3ACxOoqUvFKKDhly7EG0Aw7RLyH8x2tPfPo9QPZQ8LMv3JWxjrzzh/l0KOfnP/AzLsK05xhlADcCJrClowx3QxOv4oYPwgMbyxzP2GrMPNEmm8PoG40W998SHPDsq5BEfT9wUUYyvE/3ZDc/KgXW8bgrl14C+aGdSkvR1X3nFfx0qHwOfv+8/uaPFun1tnaP3Wp/LWX4DO0ECtsku/JkWAOm78xAjbKseEPa7kUo5dRtiDw711zS+GvZ7XJNLpudRwk2ATEC2d2pQ0ZuO7eoMziaEsM87sbvCHkBghYvslHFKomKk/Qz3H3cC12NN7rkNnn6poXLocWbjC/uM9dstePe9wsqie5WmB/WixV1RxtgaXcr9hXJ74nVvP6nOO1X9qziy9cFvCELjFMMO4wuCWYKRI0HLcArR+lmssja43Vj7MSi5xs13lrUtUZb1hpyG0KdgnpIO+p6wLoHZjNdzdH3XegoXlQIe6/oOSvsyZAkhlY3a4BqK8UyZ0aqtYA4lSP7W64qCz2umktSSHV23cGQ6TI7odkVvTdyDmRjk6Eh3U/OU5tNjh0RZ+y5AkISG4R6Qx62FaRDQwmEHXkOHEBTBmD2SbMMj/l8n0lT8/jm0Gah/N/cc7YimnFnHVJfCxQc4e+ncJLUYxEz3H7c9yZOwxeZB55I4UO5tZBxpvB/5Ii2eDjQfWdZsho/nOsGT6BkBMWF/M5p/1Gutjp4lcq7XuCT4cgarTgFor1tdm44WkilrBr16CAtudLKQfoWUtrlltHaEGoaP2Gn8RkvHyCnMwqfKhFSkxeD7/tbB9gfXGDJGH2vmNFhlstidbEwyIPHTus0U7sdSfGpuvXHy8z6W7UwhMTrIbkTaGDGq8dJxib2bvr0ai3yoB+L9wu51Xp8eix6zIn27c/2zKW9+3zazY2Gp6HFkjPfjqhiB/Q9bxUrCG+YxDq5GXtDBEMdNe4MMAZ3Ol39Si8o23K+2pRySAjdw2zj5a/NXvewrZmpmdD9HGZ4Hnn8HyyINVDRTK+oofWQI5008SrZxaYs19l6VkHRzilQ2HcBoypLR3v7bTOjUwTR8n1TNGlpQkCIDz/1b3cyUAQLovVsHjytTjr7ldx+QPn2M7ncMTcnE89zB/I4pFYkO1bo66tNk8whUrdZvHV9aFQxROqUR8yT3nTZvcF6yBJZblNiUYNyd7jF2Ktw7mbaudLX/6u7PmDrWaqH536eZ9bS+4q7OZCOG5Uenj11AQppUEvby8iAqo4MSfn+fmkmptdDr7JB+LJg56QzfA3ASpSkysEgmcD43ahuBsiKA3BnEO3MnOT81GZOciZx6RjKK3465vL9iM1CaQ32Yz+oX0osaYlq+JN7jPvr1AGgORyYW45+upm5Pi9Xgh6IMmuiCnHem75zmsDgpQXXiJE8DYV60ZOHWQ0mU4paabNZSJerfH3AxL73dNgCzUGkgLfjTN7X82jwDOvi6aYezmCLpDEGIRhpplXLl4rlAc3mvWYPovrPc/d0t/g6GeyVRSDQbQ3gGLIpoLFHHJTq35rWEfddhK2XLKIgwMtr2geQsLoxNMRtczS/67izDqk2Vj7W9WvHYiMDmjfVN78oIkN40SIQm6k27+V/A/PiQfWeZxgfCeeAhD80z9QHFOdgLbdAgisy/s+9f+vBMIMrpipgQTb0I8b+ZMQPQfYJRmFl5Kf5VmkDCW/Zf5W62Euwrohtwc9ppVRLQodr3n+WS8NahHi1+C0yBSvgTS1kT0QXbV7sdZB1nm0LH1eYTewnJ3BfnYCERqNMdg//rewi6hymLkZeckhyFwpVA2LcSXRSQBEljEREOdjfKeGJWiuuNMtTYyWxTt23AvAcT9i7Kog3Jlo0k8VRx/+euFO38IwjzaA+htWI8WrShdgSS1VYu4krIi2jEM1HSXd+7SHgjnijkD5X5L9yj7Fg7zj0HGlVKGZ3zQgsDPsjj4dQsHbtJpyHCC6uD9A1OMeDsxn2KChd/MRGkRnC46MJGfpn8f7AU8dPRI+JOMPK+cJ8LTItxECc3qMDBYL8rIqGApco4A4EYshayRKX9GxT0Q7KPKXZ5i/5sDEgUxuCJmcPZ+ldoxogJw7XVLgWGnEwkdZ4CGYm/CBbEa9nGyQMHcx3VzthP5kwdBomk0QG6sop0lV5bZC4Bh/VrPXAiOaMRfaWwbhEQF8AZAd/1X4JtzorEPIdy3Cp2xN0fOT8ubdBy2ie5nNTbywABHVfg57L5yvOMxnJigt2jGPWPtplkK0aptS8GFSIJx//wOJxvAScGndAYRbDj9dqsduPXWPoZKSaiuq8HC+nLU7yUotQ0RKLGTmWWA2V0RBIsmWi7rxXRfYgivZpfl60Oit7jCBxuXsbUaHEl53JBh/5PzZy91ld7wACTHXPjWngW6kXKkWuzV7zyRIJk/sGZT3ktumOt2BBCOjc1HDJNDQG5iWALWqrVOCzqZzfZTTNIeLI+WHoqek3/6Bx7QXW3uRpnQqAvzHonXgHcn+cXxcGGJ48Gq1JvTB9Iv3poAjn67ITEKUZx1GqwJZmHxMmcNJyGdJcJCTfQUAoMBchl68rijiElV5InsPzWJ3DvjOmaa1ledXNQ4+0O1Vog02PN2Jfp6VpRGDYdjvw+rx9k3fJLszHCD0RDYBndvpMyl5GglLu40r5mLpykwo4usAenFQmc1ruoSNaH6M0V7qHvCn3vapHFikM+flX/boL+OpgGKi1AajMBKN65XA9zRtjdFK5/dvuaUWHx3G7toMU9I849z+gs2w9upcUzLdG2NR3SuI/f2lJ+UZiY9LWNUJP+vC8eW75zQduAPntKY+L7Kx3To9UAI75pNDaTJwhPVNyCOmXmh8jQPCRIuf+yVeeB/ZoZKsFE5M8R2IaS/7hqTPxngMUmKJwnf1uCu1ItgyLV4MaBRQZ4QNaxTZf/W7OE0VGMGY6bZixngrGHp7bXfrDrCGfH7Q+iHjZ1s7JMVNVS4H/ITcm9IdkKIOqrIhh4jJKztid0JBX82sVsO7YA0Spyujnv+2qDzE72J2h1CM3elfexDD/kjFKAeErNwRLepTHM2ZFcTGH+Wn2IwSRzZ6V3Xbp1NxjzH2IuhikpuOXY5RPomjMW3aEwds305PvTP0JTu0hjZPd6wKaOZ5HsEsHMFINJgA4UU6PhaSdGnVrKp4YDWpd2ulbCFU/X64QVzW3QMdbYg9ftv9J1y4BbVKF+ocYJwde6DcbiwhA1MRwgp/GkdYi3H7tY/1IaM4BQ139SJ8BwF1pq4PIXzxWbsTJJZAqll9SCf4Ykunt/uWvsi8bEHhMa1JHY8Es2USuratqFilsjJ6BcgH7fePXISlDgB6bh6fzguzieh+vQu7DVkeGbChzHYrqHm04Iqf6xyMUn2kI/Q+LRQ5kaZedvdoUZtdVx+AZx3ezGmJAOyMennPrXV1mvGEiuP7IlmnjuLr1P55S0UaNrWEGIm2UTeViYfBO60eeb6bSLH853l2kEqS70Uuz6FIw8tFtLTH+Vee/Donpv5LJPQvKlXyotItfTazWvYEbi0fSRdIngmSKPxJ+4MPtJTMtwKvUA/ZugA4mp3FXNIuBeByCls+banf5HKxy+fdmwXP8je67C05J7TpdKIyJnv1rvYZEBYizYLU24P429kwzNnUvfDbixF7SzLTMmpqixrUHvJ9ewYsGJBsrrU3CCRVw5uJLCbNyXBu81LXpChCX1/cten3+ki+QVtSWGFjCqTBfu/xGQhswjABGxxKZRc791x8ay8Jm86g6Uz8RpMriGXL4kZFpaCtmucOLw4BbIuZ+RZxX/6aED45JH1gWcs7Txw8hxf0jFYq2huxyR5y36mpQXfhdMeQ1dyE50ai7/+KSCBVmrSm9A5uqZCdaY7fpMLSLNAMsBuHgAJ9fNyOBjHE8IqxXpaYwAAXmOoCL8MhuYQ8hCFXPERw3U9sMwqWHkx/miA1FiFZ+4uwf13OjE5JiPRRL8NohDySO6OEhxgeoikKh/neHdy9LLULlqnztbJQVYVbcHs6RMFmeSEcGz8pWUHp/+gpwf1bkZVr79Jk8C+rAlFq69AEIv9R+iPNLLNBNeLg9obCZjnKkfrGsAuQxMKp8tpYGL9YNpmKWL+jjk2SpvAXp4aDuGHFV7/thqThg9pcIbBgvweCZ03RO6uR5kGpxscbCxBsMkhqfHinjcWKGzVhSIvHUmQReAtR6NzOQWw/9NLmFXrfxdQlUo0Dc964FscuKKQen8Hu0x7c1wBr1uEtxmXC0IOSyr+qeoMGiWmM2JGKPGXy+KksD/Ou5du6+JoJNL8aTg5jxB3mntNAyt+SM3clXy6tzMsLRnZ9G3MhBG1yItQ7TDQPj/CGvXZ/1UEaCzkFcvb7scPjqUk8TvAKGPI+6vlJSqrT8W7/BjeJ88e2E611ayer5Yw2t1InCqRWA3JTKCJH+2LZlhExlaj5S57mrO7T0NfgY1fcoPcSz/2Xt9FsJG8azQSVJg7+8Yaqv/a4WB5KFE7KfmFPVEgKgF/eBKtyn2e3B7hcVVFRLsWVwv9Xs3Rzy6nMhljXWz+fiPdkS8NsAXAFAAAA==" alt="Tina" width="46" height="46">
+      <span>Tina<small>Asistente con IA</small></span>
+    </button>
 
     <!-- Footer -->
     <footer class="bg-slate-950 text-white py-12 border-t border-slate-800">
@@ -889,13 +902,14 @@
             <p class="text-sm font-serif italic text-gray-300">El camino es parte del destino</p>
             <p class="text-xs text-gray-400">Turismo · Traslados privados · Experiencias 4x4</p>
             <p class="text-xs text-gray-500 font-medium">WhatsApp: +54 9 383 457-1075</p>
+            <button type="button" aria-expanded="false" data-open-itati class="inline-flex items-center gap-2 text-sm text-amber-400 underline underline-offset-4 hover:text-amber-200">Conversar con Tina, nuestra asistente virtual con IA</button>
             <p class="text-xs text-gray-600">© 2026 Horizontes de Altura. Catamarca, Argentina.</p>
         </div>
     </footer>
 
     <!-- Script de Inicialización e Interacción -->
     <script>
-        lucide.createIcons();
+        window.lucide?.createIcons();
 
         const fechaInput = document.getElementById('fecha');
         const hoy = new Date();
@@ -913,7 +927,7 @@
                 if (!icon) return;
 
                 icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
-                lucide.createIcons();
+                window.lucide?.createIcons();
             };
 
             mobileMenuBtn.addEventListener('click', () => {
@@ -933,9 +947,6 @@
         }
 
         function sendWhatsApp(event) {
-            event.preventDefault();
-            
-            const phone = "5493834571075";
             const aeropuerto = document.querySelector('input[name="aeropuerto"]:checked').value;
             const pasajeros = document.getElementById('pasajeros').value;
             const fecha = document.getElementById('fecha').value;
@@ -967,9 +978,12 @@
 
 Quisiera consultar disponibilidad, itinerario y condiciones. ¡Muchas gracias!`;
 
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
+            // Native form navigation preserves the user's click.
+            event.currentTarget.elements.namedItem('text').value = mensaje;
+            return true;
         }
     </script>
+    <!-- Tina: Webchat oficial de Botpress. WhatsApp permanece a la izquierda. -->
+    <script src="itati-whatsapp.js?v=15" defer></script>
 </body>
 </html>
